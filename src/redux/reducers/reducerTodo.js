@@ -1,3 +1,5 @@
+import { createSelector } from "reselect"
+
 const REMOVE_TODO = 'REMOVE_TODO'
 const ADD_TODO = 'ADD_TODO'
 const TOGGLE_TODO = 'TOGGLE_TODO'
@@ -34,16 +36,19 @@ const reducerTodo = (state = initialState, action) => {
 	}
 }
 
-export const visibalTodo = (state, filter) => {
+export const selectTodoByFilter = createSelector((state) => state.todo, (_, filter) => filter, (todos, filter) => {
 	switch (filter) {
 		case 'all':
-			return state
+			return todos;
 		case 'active':
-			return state.filter((todo) => !todo.complited)
+			return todos.filter((todo) => !todo.complited);
 		case 'complited':
-			return state.filter((todo) => todo.complited)
+			return todos.filter((todo) => todo.complited);
+		default:
+			return todos;
 	}
 }
+);
 
 export const removeTodoAC = (id) => ({ type: REMOVE_TODO, id: id })
 export const toggleTodoAC = (id) => ({ type: TOGGLE_TODO, id: id })
