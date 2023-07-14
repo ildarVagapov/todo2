@@ -5,7 +5,7 @@ import { Todo } from "./components/Todo";
 function App() {
 	return (
 		<div className="App">
-			<h2 style={{ color: 'green' }}>TodoList</h2>
+			<h2 style={{ color: 'yellow' }}>TodoList</h2>
 			<NewTodo />
 			<Filter />
 			<Todo />

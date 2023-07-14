@@ -1,16 +1,14 @@
-import { useDispatch, useSelector } from "react-redux"
-import { setFilterAC } from "../redux/reducers/reducerFilter"
+import { Link, useParams } from "react-router-dom"
 
 
 const Filter = () => {
-	const dispatch = useDispatch()
-	const activeFilter = useSelector((state) => state.filter)
+	const { filter: activeFilter } = useParams()
 
 	return (
 		<div className="filter-btn">
-			<button onClick={() => dispatch(setFilterAC('all'))} style={{ color: activeFilter === 'all' ? 'red' : '' }} >all</button>
-			<button onClick={() => dispatch(setFilterAC('active'))} style={{ color: activeFilter === 'active' ? 'red' : '' }} >active</button>
-			<button onClick={() => dispatch(setFilterAC('complited'))} style={{ color: activeFilter === 'complited' ? 'red' : '' }} >complited</button>
+			<Link to='/all' style={{ color: activeFilter === 'all' ? 'red' : '' }} >all</Link>
+			<Link to='/active' style={{ color: activeFilter === 'active' ? 'red' : '' }} >active</Link>
+			<Link to='/complited' style={{ color: activeFilter === 'complited' ? 'red' : '' }} >complited</Link>
 		</div>
 	)
 }
