@@ -34,16 +34,6 @@ const reducerTodo = (state = initialState, action) => {
 	}
 }
 
-// export const visibalTodo = (state, filter) => {
-// 	switch (filter) {
-// 		case 'all':
-// 			return state
-// 		case 'active':
-// 			return state.filter((todo) => !todo.complited)
-// 		case 'complited':
-// 			return state.filter((todo) => todo.complited)
-// 	}
-// }
 
 export const removeTodoAC = (id) => ({ type: REMOVE_TODO, id: id })
 export const toggleTodoAC = (id) => ({ type: TOGGLE_TODO, id: id })
