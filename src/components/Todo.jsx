@@ -16,7 +16,7 @@ const Todo = () => {
 						<div key={todo.id}>
 							<input type="checkbox" checked={todo.complited} onChange={() => { dispatch(toggleTodoAC(todo.id)) }} />
 							<label>{todo.title}</label>
-							<button onClick={() => dispatch(removeTodoAC(todo.id))}>Delete</button>
+							<button onClick={() => dispatch(removeTodoAC(todo.id))}>удалить</button>
 						</div>
 					)
 				})

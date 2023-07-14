@@ -12,8 +12,8 @@ const NewTodo = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<input type="text" placeholder="new todo" name="title" />
-			<button>add</button>
+			<input type="text" placeholder="новая задача" name="title" />
+			<button style={{ marginLeft: '10px' }}>добавить</button>
 		</form>
 	)
 }
