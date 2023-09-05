@@ -1,12 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
-import { removeTodoAC, selectTodoByFilter, toggleTodoAC } from "../redux/reducers/reducerTodo"
+import { clearTodo, removeTodo, toggleTodo } from "../redux/slices/sliceTodo"
 import { useParams } from "react-router-dom"
 
 
 const Todo = () => {
-	const { filter } = useParams()
+
 	const dispatch = useDispatch()
-	const todos = useSelector((state) => selectTodoByFilter(state, filter));
+	const { filter } = useParams()
+
+	const todos = useSelector((state) => {
+		if (filter === 'active') {
+			return state.todo.filter(todo => !todo.completed)
+		} else if (filter == 'completed') {
+			return state.todo.filter(todo => todo.completed)
+		}
+		return state.todo
+	});
 
 	return (
 		<div className="new-todo">
@@ -14,13 +23,18 @@ const Todo = () => {
 				todos.map((todo) => {
 					return (
 						<div key={todo.id}>
-							<input type="checkbox" checked={todo.complited} onChange={() => { dispatch(toggleTodoAC(todo.id)) }} />
+							<input type="checkbox" checked={todo.completed} onChange={() => { dispatch(toggleTodo(todo.id)) }} />
 							<label>{todo.title}</label>
-							<button onClick={() => dispatch(removeTodoAC(todo.id))}>удалить</button>
+							<button onClick={() => dispatch(removeTodo(todo.id))}>удалить</button>
 						</div>
 					)
 				})
 			) : <p>Нет списка задач</p>}
+
+			<div className="info">
+				<span >задачи {todos.length}</span>
+				<button onClick={() => dispatch(clearTodo())}>очистить все</button>
+			</div>
 		</div >
 	)
 }

@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux"
-import { addTodoAC } from "../redux/reducers/reducerTodo"
+import { addTodo } from "../redux/slices/sliceTodo"
 
 const NewTodo = () => {
 	const dispatch = useDispatch()
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(addTodoAC(e.target.title.value))
+		dispatch(addTodo(e.target.title.value))
 		e.target.reset()
 	}
 

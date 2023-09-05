@@ -3,7 +3,7 @@ import { Filter } from "./components/Filter";
 import { NewTodo } from "./components/NewTodo";
 import { Todo } from "./components/Todo";
 
-function App() {
+export const App: React.FC = () => {
 	return (
 		<div className="App">
 			<Link to='/'>
@@ -16,4 +16,3 @@ function App() {
 	);
 }
 
-export default App;
