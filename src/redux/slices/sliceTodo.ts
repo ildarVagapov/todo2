@@ -39,25 +39,8 @@ const todoSlice = createSlice({
 		clearTodo: () => {
 			return initialState
 		},
-		setFilterAll: (state) => {
-			return state
-		},
-		setFilterActive: (state) => {
-			state = state.filter((todo) => !todo.completed)
-
-		},
-		setFilterCompleted: (state) => {
-			state.filter((todo) => todo.completed)
-			return state
-		},
-		setFilter: (state, action) => {
-			if (action.payload == 'active') {
-				state.filter((todo) => !todo.completed)
-				return state
-			}
-		}
 	}
 })
 
-export const { addTodo, removeTodo, clearTodo, toggleTodo, setFilter, setFilterAll, setFilterCompleted, setFilterActive } = todoSlice.actions
+export const { addTodo, removeTodo, clearTodo, toggleTodo, } = todoSlice.actions
 export const reducerTodo = todoSlice.reducer

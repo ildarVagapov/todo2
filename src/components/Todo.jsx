@@ -11,7 +11,7 @@ const Todo = () => {
 	const todos = useSelector((state) => {
 		if (filter === 'active') {
 			return state.todo.filter(todo => !todo.completed)
-		} else if (filter == 'completed') {
+		} else if (filter === 'completed') {
 			return state.todo.filter(todo => todo.completed)
 		}
 		return state.todo
