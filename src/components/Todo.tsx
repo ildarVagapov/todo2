@@ -1,22 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import { clearTodo, removeTodo, toggleTodo } from "../redux/slices/sliceTodo"
+import { selectTodo } from "../redux/selectors/selectTodo"
 import { useParams } from "react-router-dom"
 import { RootState } from "../redux/store"
 
 
 const Todo = () => {
-
-	const dispatch = useDispatch()
 	const { filter } = useParams()
-
-	const todos = useSelector((state: RootState) => {
-		if (filter === 'active') {
-			return state.todo.filter(todo => !todo.completed)
-		} else if (filter === 'completed') {
-			return state.todo.filter(todo => todo.completed)
-		}
-		return state.todo
-	});
+	const dispatch = useDispatch()
+	const selectedFilter = filter || 'all'
+	const todos = useSelector((state: RootState) => selectTodo(state, selectedFilter))
 
 	return (
 		<div className="new-todo">
