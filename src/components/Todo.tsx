@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { clearTodo, removeTodo, toggleTodo } from "../redux/slices/sliceTodo"
 import { useParams } from "react-router-dom"
+import { RootState } from "../redux/store"
 
 
 const Todo = () => {
@@ -8,7 +9,7 @@ const Todo = () => {
 	const dispatch = useDispatch()
 	const { filter } = useParams()
 
-	const todos = useSelector((state) => {
+	const todos = useSelector((state: RootState) => {
 		if (filter === 'active') {
 			return state.todo.filter(todo => !todo.completed)
 		} else if (filter === 'completed') {
